@@ -1,43 +1,68 @@
-'use strict';
-// Module Dependencies
-// -------------------
-var express     = require('express');
-var bodyParser  = require('body-parser');
-var errorhandler = require('errorhandler');
-var http        = require('http');
-var path        = require('path');
-var request     = require('request');
-//var routes      = require('./routes');
-var activity    = require('./routes/activity');
+require('dotenv').config();
+const cookieParser = require('cookie-parser');
+const express = require('express');
+const helmet = require('helmet');
+const httpErrors = require('http-errors');
+const logger = require('morgan');
+const path = require('path');
+const bodyParser = require('body-parser');
+const routes = require('./routes/index');
+const activityRouter = require('./routes/activity');
 
-var app = express();
+const app = express();
+/*
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        'default-src': ["'self'"],
+        'frame-ancestors': ["'self'", `https://mc.${process.env.STACK}.exacttarget.com`, `https://jbinteractions.${process.env.STACK}.marketingcloudapps.com`],
+      },
+    },
+  }),
+);
+*/
+// view engine setup
+//app.set('views', path.join(__dirname, 'views'));
+//app.set('view engine', 'pug');
 
-// Configure Express
-// app.set('port', process.env.PORT || 3000);
-// app.use(bodyParser.raw({type: 'application/jwt'}));
-//app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(logger('dev'));
+app.use(express.json());
+//app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+/*
+app.use(bodyParser.raw({
+  type: 'application/jwt',
+}));
 
-//app.use(express.methodOverride());
-//app.use(express.favicon());
+app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use(express.static(path.join(__dirname, 'public')));
+// serve config
+app.use('/config.json', routes.config);
 
-// Express in Development Mode
-if ('development' == app.get('env')) {
-  app.use(errorhandler());
-}
+// custom activity routes
+app.use('/journey/execute/', activityRouter.execute);
+app.use('/journey/save/', activityRouter.save);
+app.use('/journey/publish/', activityRouter.publish);
+app.use('/journey/validate/', activityRouter.validate);
 
-// HubExchange Routes
-//app.get('/', routes.index );
-//app.post('/login', routes.login );
-//app.post('/logout', routes.logout );
+// serve UI
+app.use('/', routes.ui);
 
-// Custom Hello World Activity Routes
-app.post('/journeybuilder/save/', activity.save );
-app.post('/journeybuilder/validate/', activity.validate );
-app.post('/journeybuilder/publish/', activity.publish );
-app.post('/journeybuilder/execute/', activity.execute );
-
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  next(httpErrors(404));
 });
+
+// error handler
+app.use((err, req, res, next) => {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+*/
+module.exports = app;
