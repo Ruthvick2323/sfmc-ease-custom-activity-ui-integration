@@ -7,7 +7,7 @@ var errorhandler = require('errorhandler');
 var http        = require('http');
 var path        = require('path');
 var request     = require('request');
-var routes      = require('./routes');
+//var routes      = require('./routes');
 var activity    = require('./routes/activity');
 
 var app = express();
@@ -28,9 +28,9 @@ if ('development' == app.get('env')) {
 }
 
 // HubExchange Routes
-app.get('/', routes.index );
-app.post('/login', routes.login );
-app.post('/logout', routes.logout );
+//app.get('/', routes.index );
+//app.post('/login', routes.login );
+//app.post('/logout', routes.logout );
 
 // Custom Hello World Activity Routes
 app.post('/journeybuilder/save/', activity.save );
