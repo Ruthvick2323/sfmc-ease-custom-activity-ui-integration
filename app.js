@@ -18,7 +18,7 @@ var app = express();
 //app.use(bodyParser.urlencoded({ extended: true }));
 
 //app.use(express.methodOverride());
-app.use(express.favicon());
+//app.use(express.favicon());
 
 //app.use(express.static(path.join(__dirname, 'public')));
 
