@@ -30,6 +30,8 @@ app.use(
 app.use(express.json());
 //app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(express.static(path.join(__dirname, 'src')));
 /*
 app.use(bodyParser.raw({
   type: 'application/jwt',
