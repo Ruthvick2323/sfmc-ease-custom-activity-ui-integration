@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Journey Builder EASE Test",
   "engines": {
-    "node": "6.11.1"
+    "node": "12.11.1"
   },
   "scripts": {
     "start": "node app.js"
