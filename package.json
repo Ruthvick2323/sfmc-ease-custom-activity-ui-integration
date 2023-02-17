@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ruthvick2323/DM-test/sfmc-dm-custom-activity-ui-integration.git"
+    "url": "https://github.com/Ruthvick2323/sfmc-dm-custom-activity-ui-integration.git"
   },
   "keywords": [
     "journey",
@@ -21,9 +21,9 @@
   "author": "Devs United",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Ruthvick2323/DM-test/sfmc-dm-custom-activity-ui-integration"
+    "url": "https://github.com/Ruthvick2323/sfmc-dm-custom-activity-ui-integration"
   },
-  "homepage": "https://github.com/Ruthvick2323/DM-test/sfmc-dm-custom-activity-ui-integration#readme",
+  "homepage": "https://github.com/Ruthvick2323/sfmc-dm-custom-activity-ui-integration#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "bower": "^1.8.0",
