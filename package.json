@@ -6,8 +6,13 @@
     "node": "12.11.1"
   },
   "scripts": {
-    "start": "node app.js"
-  },
+"dev": "react-scripts start",
+"start": "serve -s build",
+"build": "react-scripts build",
+"test": "react-scripts test --env=jsdom",
+"eject": "react-scripts eject",
+"heroku-postbuild": "npm run build"
+},
   "repository": {
     "type": "git",
     "url": "https://github.com/Ruthvick2323/sfmc-dm-custom-activity-ui-integration.git"
