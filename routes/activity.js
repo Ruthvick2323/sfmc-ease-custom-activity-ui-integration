@@ -1,119 +1,76 @@
-'use strict';
-var util = require('util');
+const { v1: Uuidv1 } = require('uuid');
+//const JWT = require('../utils/jwtDecoder');
+//const SFClient = require('../utils/sfmc-client');
+//const logger = require('../utils/logger');
 
-// Deps
-const Path = require('path');
-//const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
-var util = require('util');
-var http = require('https');
-
-exports.logExecuteData = [];
-
-function logData(req) {
-    exports.logExecuteData.push({
-        body: req.body,
-        headers: req.headers,
-        trailers: req.trailers,
-        method: req.method,
-        url: req.url,
-        params: req.params,
-        query: req.query,
-        route: req.route,
-        cookies: req.cookies,
-        ip: req.ip,
-        path: req.path,
-        host: req.host,
-        fresh: req.fresh,
-        stale: req.stale,
-        protocol: req.protocol,
-        secure: req.secure,
-        originalUrl: req.originalUrl
-    });
-    console.log("body: " + util.inspect(req.body));
-    console.log("headers: " + req.headers);
-    console.log("trailers: " + req.trailers);
-    console.log("method: " + req.method);
-    console.log("url: " + req.url);
-    console.log("params: " + util.inspect(req.params));
-    console.log("query: " + util.inspect(req.query));
-    console.log("route: " + req.route);
-    console.log("cookies: " + req.cookies);
-    console.log("ip: " + req.ip);
-    console.log("path: " + req.path);
-    console.log("host: " + req.host);
-    console.log("fresh: " + req.fresh);
-    console.log("stale: " + req.stale);
-    console.log("protocol: " + req.protocol);
-    console.log("secure: " + req.secure);
-    console.log("originalUrl: " + req.originalUrl);
-}
-
-/*
- * POST Handler for / route of Activity (this is the edit route).
+/**
+ * The Journey Builder calls this method for each contact processed by the journey.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
  */
-exports.edit = function (req, res) {
-    // Data from the req and put it in an array accessible to the main app.
-    //console.log( req.body );
-    logData(req);
-    res.send(200, 'Edit');
+/*
+exports.execute = async (req, res) => {
+  // decode data
+  const data = JWT(req.body);
+
+  logger.info(data);
+
+  try {
+    const id = Uuidv1();
+
+    await SFClient.saveData(process.env.DATA_EXTENSION_EXTERNAL_KEY, [
+      {
+        keys: {
+          Id: id,
+          SubscriberKey: data.inArguments[0].contactKey,
+        },
+        values: {
+          Event: data.inArguments[0].DropdownOptions,
+          Text: data.inArguments[0].Text,
+        },
+      },
+    ]);
+  } catch (error) {
+    logger.error(error);
+  }
+
+  res.status(200).send({
+    status: 'ok',
+  });
+};
+*/
+/**
+ * Endpoint that receives a notification when a user saves the journey.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
+exports.save = async (req, res) => {
+  res.status(200).send({
+    status: 'ok',
+  });
 };
 
-/*
- * POST Handler for /save/ route of Activity.
+/**
+ *  Endpoint that receives a notification when a user publishes the journey.
+ * @param req
+ * @param res
  */
-exports.save = function (req, res) {
-    // Data from the req and put it in an array accessible to the main app.
-    //console.log( req.body );
-    logData(req);
-    res.send(200, 'Save');
+exports.publish = (req, res) => {
+  res.status(200).send({
+    status: 'ok',
+  });
 };
 
-/*
- * POST Handler for /execute/ route of Activity.
+/**
+ * Endpoint that receives a notification when a user performs
+ * some validation as part of the publishing process.
+ * @param req
+ * @param res
  */
-/*
-exports.execute = function (req, res) {
-
-    // example on how to decode JWT
-    JWT(req.body, process.env.jwtSecret, (err, decoded) => {
-
-        // verification error -> unauthorized request
-        if (err) {
-            console.error(err);
-            return res.status(401).end();
-        }
-
-        if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
-            
-            // decoded in arguments
-            var decodedArgs = decoded.inArguments[0];
-            
-            logData(req);
-            res.send(200, 'Execute');
-        } else {
-            console.error('inArguments invalid.');
-            return res.status(400).end();
-        }
-    });
-};
-
- */
-/*
- * POST Handler for /publish/ route of Activity.
- */
-exports.publish = function (req, res) {
-    // Data from the req and put it in an array accessible to the main app.
-    //console.log( req.body );
-    logData(req);
-    res.send(200, 'Publish');
-};
-
-/*
- * POST Handler for /validate/ route of Activity.
- */
-exports.validate = function (req, res) {
-    // Data from the req and put it in an array accessible to the main app.
-    //console.log( req.body );
-    logData(req);
-    res.send(200, 'Validate');
+exports.validate = (req, res) => {
+  res.status(200).send({
+    status: 'ok',
+  });
 };
