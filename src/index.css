@@ -1,0 +1,45 @@
+html, body {
+    padding: 20px;
+    margin: 0px;
+}
+
+h3 {
+    margin-bottom: 0px;
+}
+
+#cover {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: navy;
+}
+
+#cover p {
+    margin: auto;
+    padding: 15px;
+    color: white;
+    font-size: 18px;
+}
+
+#activity-form {
+    padding: 10px;
+}
+
+.fieldsContainerChild {
+    display: inline-block;
+}
+
+.fieldsContainerChild span, .fieldsContainerChild select {
+    display: block;
+    width: 200px;
+}
+.fieldsContainerChild select {
+    height: 200px;
+}
+
+#transferButtons {
+    vertical-align: top;
+    padding: 100px 25px;
+}

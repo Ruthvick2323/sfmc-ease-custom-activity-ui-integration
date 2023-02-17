@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Capital One - StreamForce Custom Activity</title>
+    <link rel="stylesheet" href="index.css">
+    
+    
+    
+</head>
+    <body>
+        <div id="cover">
+            <p id="disclosure">Please configure your journey with a source DE first before customizing this activity.</p>
+        </div>
+
+        <div id="activity-form">
+            <h3>Schema Name</h3>
+            <input id="inputSchemaName" type="text" name="inputSchemaName" placeholder="sfmc_custom_activity" />
+
+            <h3>Communication ID</h3>
+            <input id="inputCommunicationId" type="text" name="inputCommunicationId" />
+
+            <h3>Schema Fields</h3>
+            <div id="fieldsContainer">
+                <div id="availableFields" class="fieldsContainerChild">
+                    <span>Available Fields</span>
+                    <select id="availableFieldsListBox" size="8" multiple></select>
+                </div>
+
+                <div id="transferButtons" class="fieldsContainerChild">
+                    <input type="button" id="moveRight" value=" > " title="Move Selected Right" />
+                    <input type="button" id="moveLeft" value=" < " title="Move Selected Left" />
+                </div>
+
+                <div id="selectedFields" class="fieldsContainerChild">
+                    <span>Selected Fields</span>
+                    <select id="selectedFieldsListBox" size="8" multiple></select>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

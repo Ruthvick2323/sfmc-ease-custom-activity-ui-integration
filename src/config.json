@@ -1,0 +1,130 @@
+{
+  "workflowApiVersion": "1.1",
+  "metaData": {
+    "icon": "icon/icon.png",
+    "category": "message"
+  },
+  "type": "REST",
+  "lang": {
+    "en-US": {
+      "name": "ENT-EASEQA",
+      "description": "Custom activity for dynamic property and schema fields in payload using journey record event data."
+    }
+  },
+  "arguments": {
+    "execute": {
+      "inArguments": [],
+      "url": "https://ease-custom-test.herokuapp.com/journey/execute",
+      "verb": "POST",
+      "format": "json",
+      "useJwt": false,
+      "includeMidEid": true,
+      "timeout": 15000,
+      "retryCount": 5,
+      "retryDelay": 10000,
+      "outArguments": [
+        {
+          "foundSignupDate": ""
+        },
+        {
+          "userId": ""
+        }
+      ],
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey":"QA-key-20230202-oauth-retail-bank"
+      }
+    }
+  },
+  "configurationArguments": {
+    "save": {
+      "url": "https://ease-custom-test.herokuapp.com/journey/save",
+      "verb": "POST",
+      "body": "{\"JourneyAction\":\"SAVE\",\"Message\":\"Saved the Journey\"}",
+      "format": "json",
+      "useJwt": false,
+      "timeout": 15000,
+      "retryCount": 5,
+      "retryDelay": 10000
+    },
+    "publish": {
+      "url": "https://ease-custom-test.herokuapp.com/journey/publish",
+      "verb": "POST",
+      "body": "{\"JourneyAction\":\"PUBLISH\",\"Message\":\"Published the Journey\"}",
+      "format": "json",
+      "useJwt": false,
+      "timeout": 15000,
+      "retryCount": 5,
+      "retryDelay": 10000
+    },
+    "validate": {
+      "url": "https://ease-custom-test.herokuapp.com/journey/validate",
+      "verb": "POST",
+      "body": "{\"JourneyAction\":\"VALIDATE\",\"Message\":\"Validated the Journey\"}",
+      "format": "json",
+      "useJwt": false,
+      "timeout": 15000,
+      "retryCount": 5,
+      "retryDelay": 10000
+    },
+    "stop": {
+      "url": "https://ease-custom-test.herokuapp.com/journey/stop",
+      "verb": "POST",
+      "body": "{\"JourneyAction\":\"STOP\",\"Message\":\"Stopped the Journey\"}",
+      "format": "json",
+      "useJwt": false,
+      "timeout": 15000,
+      "retryCount": 5,
+      "retryDelay": 10000
+    }
+  },
+  "wizardSteps": [
+    {
+      "label": "Create EASE Message",
+      "key": "Step1"
+    }
+  ],
+  "userInterfaces": {
+    "configModal": {
+      "height": 600,
+      "width": 800,
+      "fullscreen": false
+    }
+  },
+  "schema": {
+    "arguments": {
+      "execute": {
+        "inArguments": [
+          {
+            "enterpriseCustomerId": {
+              "dataType": "String",
+              "isNullable": true,
+              "direction": "out"
+            },
+            "impressionTimestamp": {
+              "dataType": "String",
+              "isNullable": true,
+              "direction": "out"
+            },
+            "communicationId": {
+              "dataType": "String",
+              "isNullable": true,
+              "direction": "out"
+            },
+            "channelType": {
+              "dataType": "String",
+              "isNullable": true,
+              "direction": "out"
+            },
+            "engagementMetaData": {
+              "dataType": "Array",
+              "isNullable": true,
+              "direction": "out"
+            }
+          }
+        ],
+        "outArguments": []
+      }
+    }
+  }
+}

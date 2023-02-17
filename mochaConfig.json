@@ -1,0 +1,6 @@
+{
+    "reporterEnabled": "tap, xunit",
+    "xunitReporterOptions": {
+        "output": "junit.xml"
+    }
+}
