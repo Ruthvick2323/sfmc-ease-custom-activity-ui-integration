@@ -14,7 +14,7 @@
   "arguments": {
     "execute": {
       "inArguments": [],
-      "url": "https://ease-custom-test.herokuapp.com/journey/execute",
+      "url": "https://ease-rm-test.herokuapp.com/journey/execute",
       "verb": "POST",
       "format": "json",
       "useJwt": false,
@@ -38,7 +38,7 @@
   },
   "configurationArguments": {
     "save": {
-      "url": "https://ease-custom-test.herokuapp.com/journey/save",
+      "url": "https://ease-rm-test.herokuapp.com/journey/save",
       "verb": "POST",
       "body": "{\"JourneyAction\":\"SAVE\",\"Message\":\"Saved the Journey\"}",
       "format": "json",
@@ -48,7 +48,7 @@
       "retryDelay": 10000
     },
     "publish": {
-      "url": "https://ease-custom-test.herokuapp.com/journey/publish",
+      "url": "https://ease-rm-test.herokuapp.com/journey/publish",
       "verb": "POST",
       "body": "{\"JourneyAction\":\"PUBLISH\",\"Message\":\"Published the Journey\"}",
       "format": "json",
@@ -58,7 +58,7 @@
       "retryDelay": 10000
     },
     "validate": {
-      "url": "https://ease-custom-test.herokuapp.com/journey/validate",
+      "url": "https://ease-rm-test.herokuapp.com/journey/validate",
       "verb": "POST",
       "body": "{\"JourneyAction\":\"VALIDATE\",\"Message\":\"Validated the Journey\"}",
       "format": "json",
@@ -68,7 +68,7 @@
       "retryDelay": 10000
     },
     "stop": {
-      "url": "https://ease-custom-test.herokuapp.com/journey/stop",
+      "url": "https://ease-rm-test.herokuapp.com/journey/stop",
       "verb": "POST",
       "body": "{\"JourneyAction\":\"STOP\",\"Message\":\"Stopped the Journey\"}",
       "format": "json",
